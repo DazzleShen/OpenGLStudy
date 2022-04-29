@@ -124,7 +124,18 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\Source\src\glad.c" />
+    <ClCompile Include="DrawRect.cpp" />
+    <ClCompile Include="DrawTriangle.cpp" />
+    <ClCompile Include="DrawWindow.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Shader.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CommonDefine.h" />
+    <ClInclude Include="DrawRect.h" />
+    <ClInclude Include="DrawTriangle.h" />
+    <ClInclude Include="DrawWindow.h" />
+    <ClInclude Include="Shader.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

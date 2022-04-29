@@ -21,5 +21,34 @@
     <ClCompile Include="..\Source\src\glad.c">
       <Filter>头文件</Filter>
     </ClCompile>
+    <ClCompile Include="DrawTriangle.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DrawWindow.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DrawRect.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Shader.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CommonDefine.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawWindow.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawTriangle.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawRect.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Shader.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
