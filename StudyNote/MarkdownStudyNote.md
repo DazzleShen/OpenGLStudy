@@ -40,15 +40,21 @@
 
 ## 连接
 连接文本放在中括号内，链接地址放在后面的括号中，例如：个人网站之[申尧焱](http://shenyaoyan.cn/)。<br>
-可选择给连接增加Title（鼠标悬停在连接上的时候会出现的文字），例如：个人网站之[申尧焱](http://shenyaoyan.cn/ "大神的成长之路")。<br>
+可选择给连接增加Title（鼠标悬停在连接上的时候会出现的文字），例如：[申尧焱](http://shenyaoyan.cn/ "大神的成长之路")。<br>
 网址和Email地址可以通过尖括号以变成可点链接<876752404@qq.com>。<br>
 可以使用强调和连接的组合来实现连接的加粗和斜体。<br>
 可以使用代码和连接的组合来实现代码连接，例如：详细代码见 [`此处`](#代码)。<br>
 引用类型连接分为两部分，例如：[申尧焱] [1]。<br>
 
 ## 图片
-插入图片Markdown语法代码：!\[图片alt](图片链接 "图片title")。例如：![默认图](youhua.png "背景图")
+插入图片Markdown语法代码：!\[图片alt](图片链接 "图片title")。例如：
+![默认图](http://shenyaoyan.cn/wp-content/uploads/2022/04/v2-38a4237164f193e71fa2ee75f79a7112_1440w.jpg "头像")<br>
+如果需要给图片添加连接的话，需要结合链接语法，例如[![默认图](youhua.png "背景图")](http://shenyaoyan.cn/)
 
+## 转义字符
+使用反斜杠对字符进行转义
 
+## End
+更多案例可以查看[Markdown官方教程](https://markdown.com.cn/basic-syntax/escaping-characters.html)
 
 [1]: <http://shenyaoyan.cn/> (申尧焱的个人网站)

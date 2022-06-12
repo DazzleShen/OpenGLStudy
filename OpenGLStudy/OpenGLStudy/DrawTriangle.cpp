@@ -33,42 +33,42 @@ void DrawTriangle()
 		return;
 	}
 
-	/*------×ÅÉ«Æ÷²¿·Ö------*/
+	/*------ï¿½ï¿½É«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½------*/
 
-	//´´½¨×ÅÉ«Æ÷
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½
 	unsigned int vertexShader = glCreateShader(GL_VERTEX_SHADER);
 
-	//½«´´½¨µÄ×ÅÉ«Æ÷ºÍ×ÅÉ«Æ÷´úÂë×Ö·û´®°ó¶¨
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½
 	glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);
 	glCompileShader(vertexShader);
 
 	CheckShaderResult(vertexShader, GL_VERTEX_SHADER);
 
-	//´´½¨Æ¬¶Î×ÅÉ«Æ÷
+	//ï¿½ï¿½ï¿½ï¿½Æ¬ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½
 	unsigned int fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
 
-	//½«Æ¬¶Î×ÅÉ«Æ÷ºÍ×ÅÉ«Æ÷´úÂë°ó¶¨
+	//ï¿½ï¿½Æ¬ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	glShaderSource(fragmentShader, 1, &fragmentShaderSource, NULL);
 	glCompileShader(fragmentShader);
 
 	CheckShaderResult(fragmentShader, GL_FRAGMENT_SHADER);
 
-	//´´½¨×ÅÉ«Æ÷³ÌÐò
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	unsigned int shaderProgram = glCreateProgram();
 
-	//½«¶¥µã×ÅÉ«Æ÷ºÍÆ¬¶Î×ÅÉ«Æ÷ºÍ×ÅÉ«Æ÷³ÌÐò°ó¶¨
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½ï¿½ï¿½Æ¬ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	glAttachShader(shaderProgram, fragmentShader);
 	glAttachShader(shaderProgram, vertexShader);
 
-	//Á¬½Ó
+	//ï¿½ï¿½ï¿½ï¿½
 	glLinkProgram(shaderProgram);
 	CheckProgramResult(shaderProgram);
 
-	//É¾³ý×ÅÉ«Æ÷
+	//É¾ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½
 	glDeleteShader(vertexShader);
 	glDeleteShader(fragmentShader);
 
-	/* Ê¹ÓÃVBOÄ£Ê½ */
+	/* Ê¹ï¿½ï¿½VBOÄ£Ê½ */
 	float vertices[] =
 	{
 		-0.5f, -0.5f, 0.0f,
@@ -76,28 +76,28 @@ void DrawTriangle()
 		0.0f, 0.5f, 0.0f
 	};
 
-	//´´½¨¶¥µã»º³å¶ÔÏó
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ã»ºï¿½ï¿½ï¿½ï¿½ï¿½
 	unsigned int VBO;
 	glGenBuffers(1, &VBO);
 
-	//Ê¹ÓÃVAOÄ£Ê½
-	//´´½¨¶¥µãÊý×é¶ÔÏó
+	//Ê¹ï¿½ï¿½VAOÄ£Ê½
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	unsigned int VAO;
 	glGenVertexArrays(1, &VAO);
 
-	//°ó¶¨VAO
+	//ï¿½ï¿½VAO
 	glBindVertexArray(VAO);
 
-	//ÀûÓÃglBindBuffer°ó¶¨gl_array_bufferÀàÐÍµÄ¶¥µã»º³å¶ÔÏó
+	//ï¿½ï¿½ï¿½ï¿½glBindBufferï¿½ï¿½gl_array_bufferï¿½ï¿½ï¿½ÍµÄ¶ï¿½ï¿½ã»ºï¿½ï¿½ï¿½ï¿½ï¿½
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 
-	//½«ÏÈÇ°µÄ¶¥µãÊý¾Ý¸´ÖÆµ½»º³åµÄÄÚ´æÖÐ
-	//GL_STATIC_DRAW £ºÊý¾Ý²»»á»ò¼¸ºõ²»»á¸Ä±ä
-	//GL_DYNAMIC_DRAW£ºÊý¾Ý»á±»¸Ä±äºÜ¶à
-	//GL_STREAM_DRAW £ºÊý¾ÝÃ¿´Î»æÖÆÊ±¶¼»á¸Ä±ä
+	//ï¿½ï¿½ï¿½ï¿½Ç°ï¿½Ä¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¸ï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú´ï¿½ï¿½ï¿½
+	//GL_STATIC_DRAW ï¿½ï¿½ï¿½ï¿½ï¿½Ý²ï¿½ï¿½ï¿½ò¼¸ºï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½
+	//GL_DYNAMIC_DRAWï¿½ï¿½ï¿½ï¿½ï¿½Ý»á±»ï¿½Ä±ï¿½Ü¶ï¿½
+	//GL_STREAM_DRAW ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¿ï¿½Î»ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½Ä±ï¿½
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
-	//Á¬½Ó¶¥µãÊôÐÔ
+	//ï¿½ï¿½ï¿½Ó¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
 
@@ -121,7 +121,7 @@ void DrawTriangle()
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		// draw
-		// Ê¹ÓÃ×ÅÉ«Æ÷³ÌÐò
+		// Ê¹ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		glUseProgram(shaderProgram);
 		glBindVertexArray(VAO);
 		glDrawArrays(GL_TRIANGLES, 0, 3);
@@ -131,6 +131,8 @@ void DrawTriangle()
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}
+
+	//#12
 
 	// optional: de-allocate all resources once they've outlived their purpose:
 	// ------------------------------------------------------------------------
