@@ -2,4 +2,5 @@
 
 #include "CommonDefine.h"
 
-void DrawTriangle();
+void DrawTriangleWithVAO();
+void DrawTriangleWithVBO();

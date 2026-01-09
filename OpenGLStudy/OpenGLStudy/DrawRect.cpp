@@ -129,7 +129,10 @@ void DrawRect()
 	// VAOs requires a call to glBindVertexArray anyways so we generally don't unbind VAOs (nor VBOs) when it's not directly necessary.
 	glBindVertexArray(0);
 
+	//线框绘制
 	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+	//默认的填充绘制
+	//glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
 	int nrAttributes = 0;
 	glGetIntegerv(GL_MAX_VERTEX_ATTRIBS, &nrAttributes);

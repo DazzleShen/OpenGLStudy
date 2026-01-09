@@ -36,13 +36,14 @@ int main()
 	//DrawWindow();
 
 	//绘制三角形
-	//DrawTriangle();
+	//DrawTriangleWithVAO();
+	//DrawTriangleWithVBO();
 
 	//绘制矩形
-	DrawRect();
+	//DrawRect();
 
 	//着色器
-	//Shader();
+	Shader();
 
     return 0;
 }
