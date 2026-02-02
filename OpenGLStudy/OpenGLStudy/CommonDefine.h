@@ -1,14 +1,16 @@
-#pragma once
+ï»¿#pragma once
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <iostream>
+#include <fstream>
+#include <sstream>
 
 // settings
 const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
 
-//¶¥µã×ÅÉ«Æ÷´úÂë
+//é¡¶ç‚¹ç€è‰²å™¨ä»£ç 
 static const char* vertexShaderSource = "#version 330 core\n"
 "layout (location = 0) in vec3 aPos;\n"
 "void main()\n"
@@ -16,7 +18,7 @@ static const char* vertexShaderSource = "#version 330 core\n"
 "	gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0f);\n"
 "}\0";
 
-//Æ¬¶Î×ÅÉ«Æ÷´úÂë
+//ç‰‡æ®µç€è‰²å™¨ä»£ç 
 static const char* fragmentShaderSource = "#version 330 core\n"
 "out vec4 FragColor;\n"
 "void main()\n"
@@ -43,7 +45,7 @@ inline void framebuffer_size_callback(GLFWwindow* window, int width, int height)
     std::cout << "resize width: " << width << " ,height:" << height << std::endl;
 }
 
-//¼ì²â×ÅÉ«Æ÷ÊÇ·ñ³É¹¦±àÒë
+//æ£€æµ‹ç€è‰²å™¨æ˜¯å¦æˆåŠŸç¼–è¯‘
 inline void CheckShaderResult(unsigned int shader, GLenum type)
 {
 	int success;
@@ -69,7 +71,7 @@ inline void CheckShaderResult(unsigned int shader, GLenum type)
 	}
 }
 
-//¼ì²â×ÅÉ«Æ÷³ÌĞòÊÇ·ñ³É¹¦±àÒë
+//æ£€æµ‹ç€è‰²å™¨ç¨‹åºæ˜¯å¦æˆåŠŸç¼–è¯‘
 inline void CheckProgramResult(unsigned int program)
 {
 	int success;
@@ -80,4 +82,21 @@ inline void CheckProgramResult(unsigned int program)
 		glGetProgramInfoLog(program, 512, NULL, infoLog);
 		std::cout << "ERROR::SHADER::GLPROGRAM::COMPILATION_FAILED\n" << infoLog << std::endl;
 	}
+}
+
+inline std::string ReadEntireFile(const std::string& file_name)
+{
+	std::ifstream file(file_name);
+
+	if(!file.is_open())
+	{
+		std::cerr << "æ— æ³•æ‰“å¼€æ–‡ä»¶ï¼š" << file_name << std::endl;
+		return "";
+	}
+
+	std::stringstream buffer;
+	buffer << file.rdbuf();
+
+	file.close();
+	return buffer.str();
 }

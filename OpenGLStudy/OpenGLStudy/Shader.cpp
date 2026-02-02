@@ -1,4 +1,4 @@
-#include "Shader.h"
+ï»¿#include "Shader.h"
 
 void Shader() 
 {
@@ -33,42 +33,48 @@ void Shader()
 		return;
 	}
 
-	/*------×ÅÉ«Æ÷²¿·Ö------*/
+	/*------ç€è‰²å™¨éƒ¨åˆ†------*/
 
-	//´´½¨¶¥µã×ÅÉ«Æ÷
+	//åˆ›å»ºé¡¶ç‚¹ç€è‰²å™¨
 	unsigned int vertexShader = glCreateShader(GL_VERTEX_SHADER);
 
-	//½«´´½¨µÄ¶¥µã×ÅÉ«Æ÷ºÍ¶¥µã×ÅÉ«Æ÷´úÂë×Ö·û´®°ó¶¨
-	glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);
+	//å°†åˆ›å»ºçš„é¡¶ç‚¹ç€è‰²å™¨å’Œé¡¶ç‚¹ç€è‰²å™¨ä»£ç å­—ç¬¦ä¸²ç»‘å®š
+	std::string vertex_shader_string = ReadEntireFile("ShaderFile/VS.txt");
+	std::cout << vertex_shader_string << std::endl;
+	const char* shader_string = vertex_shader_string.c_str();
+	glShaderSource(vertexShader, 1, &shader_string, NULL);
 	glCompileShader(vertexShader);
 
 	CheckShaderResult(vertexShader, GL_VERTEX_SHADER);
 
-	//´´½¨Æ¬¶Î×ÅÉ«Æ÷
+	//åˆ›å»ºç‰‡æ®µç€è‰²å™¨
 	unsigned int fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
 
-	//½«´´½¨µÄÆ¬¶Î×ÅÉ«Æ÷ºÍÆ¬¶Î×ÅÉ«Æ÷´úÂë°ó¶¨
-	glShaderSource(fragmentShader, 1, &fragmentShaderSource, NULL);
+	//å°†åˆ›å»ºçš„ç‰‡æ®µç€è‰²å™¨å’Œç‰‡æ®µç€è‰²å™¨ä»£ç ç»‘å®š
+	std::string fragment_shader_string = ReadEntireFile("ShaderFile/FS.txt");
+	std::cout << fragment_shader_string << std::endl;
+	shader_string = fragment_shader_string.c_str();
+	glShaderSource(fragmentShader, 1, &shader_string, NULL);
 	glCompileShader(fragmentShader);
 
 	CheckShaderResult(fragmentShader, GL_FRAGMENT_SHADER);
 
-	//´´½¨×ÅÉ«Æ÷³ÌĞò
+	//åˆ›å»ºç€è‰²å™¨ç¨‹åº
 	unsigned int shaderProgram = glCreateProgram();
 
-	//½«¶¥µã×ÅÉ«Æ÷ºÍÆ¬¶Î×ÅÉ«Æ÷ºÍ×ÅÉ«Æ÷³ÌĞò°ó¶¨
+	//å°†é¡¶ç‚¹ç€è‰²å™¨å’Œç‰‡æ®µç€è‰²å™¨å’Œç€è‰²å™¨ç¨‹åºç»‘å®š
 	glAttachShader(shaderProgram, fragmentShader);
 	glAttachShader(shaderProgram, vertexShader);
 
-	//Á¬½Ó
+	//è¿æ¥
 	glLinkProgram(shaderProgram);
 	CheckProgramResult(shaderProgram);
 
-	//É¾³ı×ÅÉ«Æ÷
+	//åˆ é™¤ç€è‰²å™¨
 	glDeleteShader(vertexShader);
 	glDeleteShader(fragmentShader);
 
-	/* Ê¹ÓÃVBOÄ£Ê½ */
+	/* ä½¿ç”¨VBOæ¨¡å¼ */
 	float vertices[] =
 	{
 		-0.5f, -0.5f, 0.0f,
@@ -76,28 +82,28 @@ void Shader()
 		0.0f, 0.5f, 0.0f
 	};
 
-	//´´½¨¶¥µã»º³å¶ÔÏó
+	//åˆ›å»ºé¡¶ç‚¹ç¼“å†²å¯¹è±¡
 	unsigned int VBO;
 	glGenBuffers(1, &VBO);
 
-	//Ê¹ÓÃVAOÄ£Ê½
-	//´´½¨¶¥µãÊı×é¶ÔÏó
+	//ä½¿ç”¨VAOæ¨¡å¼
+	//åˆ›å»ºé¡¶ç‚¹æ•°ç»„å¯¹è±¡
 	unsigned int VAO;
 	glGenVertexArrays(1, &VAO);
 
-	//°ó¶¨VAO
+	//ç»‘å®šVAO
 	glBindVertexArray(VAO);
 
-	//ÀûÓÃglBindBuffer°ó¶¨gl_array_bufferÀàĞÍµÄ¶¥µã»º³å¶ÔÏó
+	//åˆ©ç”¨glBindBufferç»‘å®šgl_array_bufferç±»å‹çš„é¡¶ç‚¹ç¼“å†²å¯¹è±¡
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 
-	//½«ÏÈÇ°µÄ¶¥µãÊı¾İ¸´ÖÆµ½»º³åµÄÄÚ´æÖĞ
-	//GL_STATIC_DRAW £ºÊı¾İ²»»á»ò¼¸ºõ²»»á¸Ä±ä
-	//GL_DYNAMIC_DRAW£ºÊı¾İ»á±»¸Ä±äºÜ¶à
-	//GL_STREAM_DRAW £ºÊı¾İÃ¿´Î»æÖÆÊ±¶¼»á¸Ä±ä
+	//å°†å…ˆå‰çš„é¡¶ç‚¹æ•°æ®å¤åˆ¶åˆ°ç¼“å†²çš„å†…å­˜ä¸­
+	//GL_STATIC_DRAW ï¼šæ•°æ®ä¸ä¼šæˆ–å‡ ä¹ä¸ä¼šæ”¹å˜
+	//GL_DYNAMIC_DRAWï¼šæ•°æ®ä¼šè¢«æ”¹å˜å¾ˆå¤š
+	//GL_STREAM_DRAW ï¼šæ•°æ®æ¯æ¬¡ç»˜åˆ¶æ—¶éƒ½ä¼šæ”¹å˜
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
-	//Á¬½Ó¶¥µãÊôĞÔ
+	//è¿æ¥é¡¶ç‚¹å±æ€§
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
 
@@ -121,7 +127,7 @@ void Shader()
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		// draw
-		// Ê¹ÓÃ×ÅÉ«Æ÷³ÌĞò
+		// ä½¿ç”¨ç€è‰²å™¨ç¨‹åº
 		glUseProgram(shaderProgram);
 		glBindVertexArray(VAO);
 		glDrawArrays(GL_TRIANGLES, 0, 3);

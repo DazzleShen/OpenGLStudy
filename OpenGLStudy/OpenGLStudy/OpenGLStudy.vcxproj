@@ -137,6 +137,10 @@
     <ClInclude Include="DrawWindow.h" />
     <ClInclude Include="Shader.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="ShaderFile\FS.txt" />
+    <Text Include="ShaderFile\VS.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
