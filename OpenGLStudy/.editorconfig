@@ -1,0 +1,17 @@
+﻿root = true
+
+[*.{txt,md,cs,cpp,h,hpp,c,py,js,json,xml}]
+# Use UTF-8 without BOM (no signature)
+charset = utf-8
+# Windows projects usually use CRLF line endings
+end_of_line = crlf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 4
+
+[*.sh]
+end_of_line = lf
+charset = utf-8
+indent_style = space
+indent_size = 2
