@@ -1,4 +1,4 @@
-/* //²é¿´OpenGL°æ±¾´úÂë
+/* //æŸ¥çœ‹OpenGLç‰ˆæœ¬ä»£ç 
 #include<Windows.h>
 #include <stdio.h>
 #include <GL/glut.h>
@@ -11,16 +11,16 @@ int main(int argc, char** argv)
 	glutInitWindowPosition(100, 100);
 	glutCreateWindow("OpenGL Version");
 
-	const GLubyte* name = glGetString(GL_VENDOR); //·µ»Ø¸ºÔğµ±Ç°OpenGLÊµÏÖ³§ÉÌµÄÃû×Ö
-	const GLubyte* biaoshifu = glGetString(GL_RENDERER); //·µ»ØÒ»¸öäÖÈ¾Æ÷±êÊ¶·û£¬Í¨³£ÊÇ¸öÓ²¼şÆ½Ì¨
-	const GLubyte* OpenGLVersion = glGetString(GL_VERSION); //·µ»Øµ±Ç°OpenGLÊµÏÖµÄ°æ±¾ºÅ
-	const GLubyte* gluVersion = gluGetString(GLU_VERSION); //·µ»Øµ±Ç°GLU¹¤¾ß¿â°æ±¾
+	const GLubyte* name = glGetString(GL_VENDOR); //è¿”å›è´Ÿè´£å½“å‰OpenGLå®ç°å‚å•†çš„åå­—
+	const GLubyte* biaoshifu = glGetString(GL_RENDERER); //è¿”å›ä¸€ä¸ªæ¸²æŸ“å™¨æ ‡è¯†ç¬¦ï¼Œé€šå¸¸æ˜¯ä¸ªç¡¬ä»¶å¹³å°
+	const GLubyte* OpenGLVersion = glGetString(GL_VERSION); //è¿”å›å½“å‰OpenGLå®ç°çš„ç‰ˆæœ¬å·
+	const GLubyte* gluVersion = gluGetString(GLU_VERSION); //è¿”å›å½“å‰GLUå·¥å…·åº“ç‰ˆæœ¬
 
-	printf("OpenGLÊµÏÖ³§ÉÌµÄÃû×Ö£º%s\n", name);
-	printf("äÖÈ¾Æ÷±êÊ¶·û£º%s\n", biaoshifu);
-	printf("OpenGLÊµÏÖµÄ°æ±¾ºÅ£º%s\n", OpenGLVersion);
-	printf("OGLU¹¤¾ß¿â°æ±¾£º%s\n", gluVersion);
-	//Èç¹ûÊÇÔÚVSÉÏÖ´ĞĞ£¬ĞèÒªÔÚreturnÇ°¼ÓÉÏ£ºsystem("pause");
+	printf("OpenGLå®ç°å‚å•†çš„åå­—ï¼š%s\n", name);
+	printf("æ¸²æŸ“å™¨æ ‡è¯†ç¬¦ï¼š%s\n", biaoshifu);
+	printf("OpenGLå®ç°çš„ç‰ˆæœ¬å·ï¼š%s\n", OpenGLVersion);
+	printf("OGLUå·¥å…·åº“ç‰ˆæœ¬ï¼š%s\n", gluVersion);
+	//å¦‚æœæ˜¯åœ¨VSä¸Šæ‰§è¡Œï¼Œéœ€è¦åœ¨returnå‰åŠ ä¸Šï¼šsystem("pause");
 	return 0;
 }
 */
@@ -32,18 +32,18 @@ int main(int argc, char** argv)
 
 int main()
 {
-	//»æÖÆ³õÊ¼´°¿Ú
+	//ç»˜åˆ¶åˆå§‹çª—å£
 	//DrawWindow();
 
-	//»æÖÆÈı½ÇĞÎ
+	//ç»˜åˆ¶ä¸‰è§’å½¢
 	//DrawTriangleWithVAO();
 	//DrawTriangleWithVBO();
 
-	//»æÖÆ¾ØĞÎ
+	//ç»˜åˆ¶çŸ©å½¢
 	//DrawRect();
 
-	//×ÅÉ«Æ÷
-	Shader();
+	//ç€è‰²å™¨
+	//Shader();
 
     return 0;
 }
