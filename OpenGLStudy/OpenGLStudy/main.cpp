@@ -28,7 +28,7 @@ int main(int argc, char** argv)
 #include "DrawWindow.h"
 #include "DrawTriangle.h"
 #include "DrawRect.h"
-#include "Shader.h"
+#include "DrawShader.h"
 
 int main()
 {

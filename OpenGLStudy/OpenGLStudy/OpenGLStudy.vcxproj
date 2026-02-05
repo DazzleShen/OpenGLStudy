@@ -128,18 +128,22 @@
     <ClCompile Include="DrawTriangle.cpp" />
     <ClCompile Include="DrawWindow.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Shader.cpp" />
+    <ClCompile Include="DrawShader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CommonDefine.h" />
     <ClInclude Include="DrawRect.h" />
     <ClInclude Include="DrawTriangle.h" />
     <ClInclude Include="DrawWindow.h" />
-    <ClInclude Include="Shader.h" />
+    <ClInclude Include="DrawShader.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="ShaderFile\FS.txt" />
     <Text Include="ShaderFile\VS.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ShaderFile\FSNormal.txt" />
+    <Content Include="ShaderFile\VSNormal.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
