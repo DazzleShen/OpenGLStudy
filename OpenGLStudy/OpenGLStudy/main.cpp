@@ -29,6 +29,7 @@ int main(int argc, char** argv)
 #include "DrawTriangle.h"
 #include "DrawRect.h"
 #include "DrawShader.h"
+#include "DrawTexture.h"
 
 int main()
 {
@@ -43,7 +44,10 @@ int main()
 	//DrawRect();
 
 	//着色器
-	//Shader();
+	//ShaderDraw();
+
+    //纹理
+    DrawTexture();
 
     return 0;
 }

@@ -33,92 +33,92 @@ void DrawRect()
 		return;
 	}
 
-	/*------×ÅÉ«Æ÷²¿·Ö------*/
+	/*------ç€è‰²å™¨éƒ¨åˆ†------*/
 
-	//´´½¨×ÅÉ«Æ÷
+	//åˆ›å»ºç€è‰²å™¨
 	unsigned int vertexShader = glCreateShader(GL_VERTEX_SHADER);
 
-	//½«´´½¨µÄ×ÅÉ«Æ÷ºÍ×ÅÉ«Æ÷´úÂë×Ö·û´®°ó¶¨
+	//å°†åˆ›å»ºçš„ç€è‰²å™¨å’Œç€è‰²å™¨ä»£ç å­—ç¬¦ä¸²ç»‘å®š
 	glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);
 	glCompileShader(vertexShader);
 
 	CheckShaderResult(vertexShader, GL_VERTEX_SHADER);
 
-	//´´½¨Æ¬¶Î×ÅÉ«Æ÷
+	//åˆ›å»ºç‰‡æ®µç€è‰²å™¨
 	unsigned int fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
 
-	//½«Æ¬¶Î×ÅÉ«Æ÷ºÍ×ÅÉ«Æ÷´úÂë°ó¶¨
+	//å°†ç‰‡æ®µç€è‰²å™¨å’Œç€è‰²å™¨ä»£ç ç»‘å®š
 	glShaderSource(fragmentShader, 1, &fragmentShaderSource, NULL);
 	glCompileShader(fragmentShader);
 
 	CheckShaderResult(fragmentShader, GL_FRAGMENT_SHADER);
 
-	//´´½¨×ÅÉ«Æ÷³ÌĞò
+	//åˆ›å»ºç€è‰²å™¨ç¨‹åº
 	unsigned int shaderProgram = glCreateProgram();
 
-	//½«¶¥µã×ÅÉ«Æ÷ºÍÆ¬¶Î×ÅÉ«Æ÷ºÍ×ÅÉ«Æ÷³ÌĞò°ó¶¨
+	//å°†é¡¶ç‚¹ç€è‰²å™¨å’Œç‰‡æ®µç€è‰²å™¨å’Œç€è‰²å™¨ç¨‹åºç»‘å®š
 	glAttachShader(shaderProgram, fragmentShader);
 	glAttachShader(shaderProgram, vertexShader);
 
-	//Á¬½Ó
+	//è¿æ¥
 	glLinkProgram(shaderProgram);
 	CheckProgramResult(shaderProgram);
 
-	//É¾³ı×ÅÉ«Æ÷
+	//åˆ é™¤ç€è‰²å™¨
 	glDeleteShader(vertexShader);
 	glDeleteShader(fragmentShader);
 
-	/* Ê¹ÓÃEBOÄ£Ê½ */
+	/* ä½¿ç”¨EBOæ¨¡å¼ */
 	float vertices[] =
 	{
-		0.5f, 0.5f, 0.0f,	//ÓÒÉÏ½Ç
-		0.5f, -0.5f, 0.0f,	//ÓÒÏÂ½Ç
-		-0.5f, -0.5f, 0.0f,	//×óÏÂ½Ç
-		-0.5f, 0.5f, 0.0f	//×óÉÏ½Ç
+		0.5f, 0.5f, 0.0f,	//å³ä¸Šè§’
+		0.5f, -0.5f, 0.0f,	//å³ä¸‹è§’
+		-0.5f, -0.5f, 0.0f,	//å·¦ä¸‹è§’
+		-0.5f, 0.5f, 0.0f	//å·¦ä¸Šè§’
 	};
 
 	unsigned int indices[] =
 	{
-		//×¢ÒâË÷ÒıĞèÒª´Ó0¿ªÊ¼
-		0, 1, 3,	//µÚÒ»¸öÈı½ÇĞÎ
-		1, 2, 3		//µÚ¶ş¸öÈı½ÇĞÎ
+		//æ³¨æ„ç´¢å¼•éœ€è¦ä»0å¼€å§‹
+		0, 1, 3,	//ç¬¬ä¸€ä¸ªä¸‰è§’å½¢
+		1, 2, 3		//ç¬¬äºŒä¸ªä¸‰è§’å½¢
 	};
 
-	//´´½¨¶¥µã»º³å¶ÔÏó
+	//åˆ›å»ºé¡¶ç‚¹ç¼“å†²å¯¹è±¡
 	unsigned int VBO;
 	glGenBuffers(1, &VBO);
 
-	//Ê¹ÓÃVAOÄ£Ê½
-	//´´½¨¶¥µãÊı×é¶ÔÏó
+	//ä½¿ç”¨VAOæ¨¡å¼
+	//åˆ›å»ºé¡¶ç‚¹æ•°ç»„å¯¹è±¡
 	unsigned int VAO;
 	glGenVertexArrays(1, &VAO);
 
-	//°ó¶¨VAO
+	//ç»‘å®šVAO
 	glBindVertexArray(VAO);
 
-	//ÀûÓÃglBindBuffer°ó¶¨gl_array_bufferÀàĞÍµÄ¶¥µã»º³å¶ÔÏó
+	//åˆ©ç”¨glBindBufferç»‘å®šgl_array_bufferç±»å‹çš„é¡¶ç‚¹ç¼“å†²å¯¹è±¡
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 
-	//½«ÏÈÇ°µÄ¶¥µãÊı¾İ¸´ÖÆµ½»º³åµÄÄÚ´æÖĞ
-	//GL_STATIC_DRAW £ºÊı¾İ²»»á»ò¼¸ºõ²»»á¸Ä±ä
-	//GL_DYNAMIC_DRAW£ºÊı¾İ»á±»¸Ä±äºÜ¶à
-	//GL_STREAM_DRAW £ºÊı¾İÃ¿´Î»æÖÆÊ±¶¼»á¸Ä±ä
+	//å°†å…ˆå‰çš„é¡¶ç‚¹æ•°æ®å¤åˆ¶åˆ°ç¼“å†²çš„å†…å­˜ä¸­
+	//GL_STATIC_DRAW ï¼šæ•°æ®ä¸ä¼šæˆ–å‡ ä¹ä¸ä¼šæ”¹å˜
+	//GL_DYNAMIC_DRAWï¼šæ•°æ®ä¼šè¢«æ”¹å˜å¾ˆå¤š
+	//GL_STREAM_DRAW ï¼šæ•°æ®æ¯æ¬¡ç»˜åˆ¶æ—¶éƒ½ä¼šæ”¹å˜
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
-	//´´½¨Ë÷Òı»º³å¶ÔÏó
+	//åˆ›å»ºç´¢å¼•ç¼“å†²å¯¹è±¡
 	unsigned int EBO;
 	glGenBuffers(1, &EBO);
 
-	//ÀûÓÃglBindBuffer°ó¶¨gl_array_bufferÀàĞÍµÄ¶¥µã»º³å¶ÔÏó
+	//åˆ©ç”¨glBindBufferç»‘å®šgl_array_bufferç±»å‹çš„é¡¶ç‚¹ç¼“å†²å¯¹è±¡
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
 
-	//½«ÏÈÇ°µÄ¶¥µãÊı¾İ¸´ÖÆµ½»º³åµÄÄÚ´æÖĞ
-	//GL_STATIC_DRAW £ºÊı¾İ²»»á»ò¼¸ºõ²»»á¸Ä±ä
-	//GL_DYNAMIC_DRAW£ºÊı¾İ»á±»¸Ä±äºÜ¶à
-	//GL_STREAM_DRAW £ºÊı¾İÃ¿´Î»æÖÆÊ±¶¼»á¸Ä±ä
+	//å°†å…ˆå‰çš„é¡¶ç‚¹æ•°æ®å¤åˆ¶åˆ°ç¼“å†²çš„å†…å­˜ä¸­
+	//GL_STATIC_DRAW ï¼šæ•°æ®ä¸ä¼šæˆ–å‡ ä¹ä¸ä¼šæ”¹å˜
+	//GL_DYNAMIC_DRAWï¼šæ•°æ®ä¼šè¢«æ”¹å˜å¾ˆå¤š
+	//GL_STREAM_DRAW ï¼šæ•°æ®æ¯æ¬¡ç»˜åˆ¶æ—¶éƒ½ä¼šæ”¹å˜
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
-	//Á¬½Ó¶¥µãÊôĞÔ
+	//è¿æ¥é¡¶ç‚¹å±æ€§
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
 
@@ -129,9 +129,9 @@ void DrawRect()
 	// VAOs requires a call to glBindVertexArray anyways so we generally don't unbind VAOs (nor VBOs) when it's not directly necessary.
 	glBindVertexArray(0);
 
-	//Ïß¿ò»æÖÆ
+	//çº¿æ¡†ç»˜åˆ¶
 	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-	//Ä¬ÈÏµÄÌî³ä»æÖÆ
+	//é»˜è®¤çš„å¡«å……ç»˜åˆ¶
 	//glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
 	int nrAttributes = 0;
@@ -151,7 +151,7 @@ void DrawRect()
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		// draw
-		// Ê¹ÓÃ×ÅÉ«Æ÷³ÌĞò
+		// ä½¿ç”¨ç€è‰²å™¨ç¨‹åº
 		glUseProgram(shaderProgram);
 		glBindVertexArray(VAO);
 		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);

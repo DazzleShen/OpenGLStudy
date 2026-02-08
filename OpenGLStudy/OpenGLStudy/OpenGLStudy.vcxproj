@@ -125,17 +125,21 @@
   <ItemGroup>
     <ClCompile Include="..\Source\src\glad.c" />
     <ClCompile Include="DrawRect.cpp" />
+    <ClCompile Include="DrawTexture.cpp" />
     <ClCompile Include="DrawTriangle.cpp" />
     <ClCompile Include="DrawWindow.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="DrawShader.cpp" />
+    <ClCompile Include="Shader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CommonDefine.h" />
     <ClInclude Include="DrawRect.h" />
+    <ClInclude Include="DrawTexture.h" />
     <ClInclude Include="DrawTriangle.h" />
     <ClInclude Include="DrawWindow.h" />
     <ClInclude Include="DrawShader.h" />
+    <ClInclude Include="Shader.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="ShaderFile\FS.txt" />
@@ -144,6 +148,13 @@
   <ItemGroup>
     <Content Include="ShaderFile\FSNormal.txt" />
     <Content Include="ShaderFile\VSNormal.txt" />
+    <Content Include="ShaderFile\VSWithShaderClass.vs" />
+    <Content Include="ShaderFile\VSWithTexture.vs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ShaderFile\FSWithMultiTexture.fs" />
+    <Compile Include="ShaderFile\FSWithShaderClass.fs" />
+    <Compile Include="ShaderFile\FSWithTexture.fs" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
